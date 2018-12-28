@@ -1,0 +1,93 @@
+<div class="container">
+  <br />
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <form>
+        <div class="form-row">
+
+          <div class="col">
+            <input name="name" id="name" [(ngModel)]="newTea.name" placeholder="Name" class="form-control">
+          </div>
+          <div class="col">
+            <input name="kind" id="kind" [(ngModel)]="newTea.kind" placeholder="Black, green, matcha...?" class="form-control" >
+          </div>
+          <div class="col">
+            <input name="unit" id="unit" [(ngModel)]="newTea.unit" placeholder="Unit sold as" class="form-control" >
+          </div>
+          <div class="col">
+            <input name="quantity" id="quantity" [(ngModel)]="newTea.quantity" placeholder="Qty" class="form-control" >
+          </div>
+          <div class="col">
+            <input name="price" id="price" [(ngModel)]="newTea.price" placeholder="$$$" class="form-control" >
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary btn-block" (click)="create()">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <br />
+
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+
+      <div class="teas" *ngIf="teasList">
+        <table class="table table-striped table-dark">
+          <thead class="h">
+            <tr class="h">
+              <th class="h">Tea</th>
+              <th class="h">Kind</th>
+              <th class="h">Unit</th>
+              <th class="h">Qty</th>
+              <th class="h">Price</th>
+              <th class="h text-center">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tea" (dblclick)="editTea(tea)" *ngFor="let tea of teasList">
+
+              <ng-container *ngIf="!editTeas.includes(tea); else editTD">
+                <td>{{tea.name}}</td>
+                <td>{{tea.kind}}</td>
+                <td>{{tea.unit}}</td>
+                <td>{{tea.quantity}}</td>
+                <td>{{tea.price | currency }}</td>
+              </ng-container>
+
+              <ng-template #editTD>
+                <td>
+                  <input name="name" id="name" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.name" placeholder={{tea.name}} class="form-control">
+                </td>
+                <td>
+                  <input name="kind" id="kind" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.kind" placeholder={{tea.kind}} class="form-control" >
+                </td>
+                <td>
+                  <input name="unit" id="unit" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.unit" placeholder={{tea.unit}} class="form-control" >
+                </td>
+                <td>
+                  <input name="quantity" id="quantity" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.quantity" placeholder={{tea.quantity}} class="form-control" >
+                </td>
+                <td>
+                  <input name="price" id="price" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.price" placeholder={{tea.price}} class="form-control" >
+                </td>
+              </ng-template>
+
+              <td class="o d-flex justify-content-around">
+                <a class="btn btn-primary" (click)="editTea(tea)">
+                  <i class="fa fa-pencil"></i>
+                </a>
+                <a class="btn btn-danger" (click)="deleteTea(tea)">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { TeaComponent } from './tea/tea.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+import { ShowComponent } from './show/show.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeaComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,

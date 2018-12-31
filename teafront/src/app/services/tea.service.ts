@@ -30,6 +30,11 @@ export class TeaService {
     }))
   }
 
+  oneTea(id:string):Observable<Tea>{
+    let showUrl = `${this.teaUrl}/${id}`
+    return this.http.get(showUrl);
+  }
+
   editTea(tea:Tea){
     let editUrl = `${this.teaUrl}`
     //returns the observable of http put request 

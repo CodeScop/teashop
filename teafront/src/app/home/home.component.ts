@@ -1,3 +1,6 @@
+import { Response } from '@angular/http';
+import { TeaService } from '../services/tea.service';
+import Tea from '../models/tea.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private teaService: TeaService) {}
 
   ngOnInit() {
+    teasList: Tea[]=[];
+    this.teaService.getTeas()
+    .subscribe(teas => {
+      this.teasList = teas;
+      console.log(teas);
+    })
   }
 
 }

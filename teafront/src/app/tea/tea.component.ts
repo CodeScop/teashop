@@ -1,7 +1,8 @@
 import { Response } from '@angular/http';
 import { TeaService } from '../services/tea.service';
 import Tea from '../models/tea.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tea',
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tea.component.scss']
 })
 export class TeaComponent implements OnInit {
+  @ViewChild('f') teaForm: NgForm;
+  @ViewChild('f2') teaForm2: NgForm;
 
   constructor(private teaService: TeaService) {}
 
@@ -16,6 +19,8 @@ export class TeaComponent implements OnInit {
 
   teasList: Tea[];
   editTeas: Tea[] = [];
+  
+  @Input() enableEdit: boolean = false;
 
   ngOnInit(): void {
     this.teaService.getTeas()
@@ -25,12 +30,17 @@ export class TeaComponent implements OnInit {
     })
   }
 
+  onSubmit (form: NgForm) {}
+
+  onSubmit2 (form: NgForm) {}
+
   create() {
     this.teaService.createTea(this.newTea)
     .subscribe((res) => {
       this.teasList.push(res.data)
       this.newTea = new Tea()
     })
+    this.teaForm.reset();
   }
   
   editTea(tea: Tea) {
@@ -47,10 +57,11 @@ export class TeaComponent implements OnInit {
         })
       }
     }
+    this.teaForm.reset();
   }
 
   submitTea(event, tea:Tea){
-    if(event.keyCode == 13){
+    if(event.keyCode == 13 && this.teaForm2.valid){
       this.editTea(tea)
     }
   }
@@ -60,5 +71,7 @@ export class TeaComponent implements OnInit {
       this.teasList.splice(this.teasList.indexOf(tea), 1);
     })
   }
+
+
 
 }

@@ -57,6 +57,7 @@ exports.updateTea = async function(tea){
   oldTea.unit = tea.unit;
   oldTea.quantity = tea.quantity;
   oldTea.price = tea.price;
+  oldTea.imageUrl = tea.imageUrl;
 
   console.log(oldTea);
 

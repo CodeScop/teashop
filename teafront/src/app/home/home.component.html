@@ -5,7 +5,9 @@
   <h1 class="text-dark">Our selection of fine teas</h1>
   <div class="card-columns teasList" *ngIf="teasList">
     <div class="card text-center tea border-dark" *ngFor="let tea of teasList">
-      <img src="{{tea.imageUrl}}" class="card-img-top" alt="Image of {{tea.name}}" />
+      <ng-container *ngIf="tea.imageUrl">
+        <img src="{{tea.imageUrl}}" class="card-img-top" alt="Image of {{tea.name}}" />
+      </ng-container>
       <h5 class="card-title bg-dark p-2"><a href="/tea/{{tea._id}}" class="text-success">{{tea.name}}</a></h5>
       <p class="card-text text-dark pb-2"><em>~{{tea.kind}}~</em></p>
     </div>

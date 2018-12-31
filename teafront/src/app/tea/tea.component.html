@@ -21,6 +21,10 @@
             </select>          
           </div>
           <div class="col-md">
+              <input name="imageUrl" id="imageUrl" [(ngModel)]="newTea.imageUrl" placeholder="Image link" class="form-control" #imageUrl="ngModel" required>
+              <span class="help-block" *ngIf="!imageUrl.valid && imageUrl.touched">This field is required!</span>
+            </div>
+          <div class="col-md">
             <input name="quantity" id="quantity" [(ngModel)]="newTea.quantity" placeholder="Qty" class="form-control" #quantity="ngModel" required type="number" min="0">
             <span class="help-block" *ngIf="!quantity.valid && quantity.touched">This field is required!</span>
           </div>
@@ -48,6 +52,7 @@
             <tr class="h">
               <th class="h">Tea</th>
               <th class="h">Kind</th>
+              <th class="h mw-25">Url</th>
               <th class="h">Unit</th>
               <th class="h">Qty</th>
               <th class="h">Price</th>
@@ -60,6 +65,7 @@
               <ng-container *ngIf="!editTeas.includes(tea); else editTD">
                 <td>{{tea.name}}</td>
                 <td>{{tea.kind}}</td>
+                <td>[...]</td>
                 <td>{{tea.unit}}</td>
                 <td>{{tea.quantity}}</td>
                 <td>{{tea.price | currency }}</td>
@@ -74,6 +80,10 @@
                         <input name="kind2" id="kind2" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.kind" placeholder={{tea.kind}} class="form-control" #kind2="ngModel" required>
                         <span class="help-block" *ngIf="!kind2.valid && kind2.touched">This field is required!</span>
                       </td>
+                      <td>
+                          <input name="imageUrl2" id="imageUrl2" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.imageUrl" placeholder={{tea.imageUrl}} class="form-control" #imageUrl2="ngModel" required>
+                          <span class="help-block" *ngIf="!imageUrl2.valid && imageUrl2.touched">This field is required!</span>
+                        </td>
                       <td>
                           <select class="form-control" [(ngModel)]="tea.unit" name="unit">
                           <option hidden disabled selected value value=""> -- select an option -- </option>

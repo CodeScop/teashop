@@ -20,7 +20,8 @@ exports.createTea = async function(tea){
     kind: tea.kind,
     unit: tea.unit,
     quantity: tea.quantity,
-    price: tea.price
+    price: tea.price,
+    imageUrl: tea.imageUrl
   });
 
   try {

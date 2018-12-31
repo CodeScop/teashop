@@ -20,7 +20,8 @@ exports.createTea = async function(req, res, next){
     kind: req.body.kind,
     unit: req.body.unit,
     quantity: req.body.quantity,
-    price: req.body.price
+    price: req.body.price,
+    imageUrl: req.body.imageUrl
   }
 
   try{
@@ -47,7 +48,8 @@ exports.updateTea = async function(req, res, next){
     kind: req.body.kind ? req.body.kind : null,
     unit: req.body.unit ? req.body.unit : null,
     quantity: req.body.quantity ? req.body.quantity : null,
-    price: req.body.price ? req.body.price : null
+    price: req.body.price ? req.body.price : null,
+    imageUrl: req.body.imageUrl ? req.body.imageUrl : null
   }
 
   try{

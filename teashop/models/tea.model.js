@@ -1,14 +1,33 @@
-var mongoose = require('mongoose')
-var mongoosePaginate = require('mongoose-paginate')
+const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
 
 
-var TeaSchema = new mongoose.Schema({
-    name: String,
-    kind: String,
-    unit: String,
-    quantity: Number,
-    price: Number
-})
+const TeaSchema = new mongoose.Schema({
+    name: {
+      type: String,
+      required: true
+    },
+    kind: {
+      type: String,
+      required: true
+    },
+    unit: {
+      type: String,
+      required: true
+    },
+    quantity: {
+      type: Number,
+      required: true
+    },
+    price: {
+      type: String,
+      required: true
+    },
+    imageUrl: {
+      type: String,
+      required: true
+    }
+});
 
 TeaSchema.plugin(mongoosePaginate)
 const Tea = mongoose.model('Tea', TeaSchema)

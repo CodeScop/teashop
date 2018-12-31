@@ -32,6 +32,12 @@ exports.createTea = async function(tea){
   }
 }
 
+exports.getTea = async function(tea) {
+  const id = tea.id;
+  const showTea = Tea.findById(id);
+  console.log(showTea);
+}
+
 exports.updateTea = async function(tea){
   var id = tea.id
   try {

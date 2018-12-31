@@ -20,7 +20,8 @@ exports.createTea = async function(req, res, next){
     kind: req.body.kind,
     unit: req.body.unit,
     quantity: req.body.quantity,
-    price: req.body.price
+    price: req.body.price,
+    imageUrl: req.body.imageUrl
   }
 
   try{
@@ -31,6 +32,17 @@ exports.createTea = async function(req, res, next){
   }
   
 }
+
+exports.getTea = async function(req, res, next) {
+  const id = req.params.id
+  Tea.findById(id)
+  .then(tea => {
+    console.log(tea);
+    return res.status(201).json({status: 201, data: tea, message: "This works!"})
+  })
+  .catch(err => console.log(err));
+}
+
 
 exports.updateTea = async function(req, res, next){
 
@@ -47,7 +59,8 @@ exports.updateTea = async function(req, res, next){
     kind: req.body.kind ? req.body.kind : null,
     unit: req.body.unit ? req.body.unit : null,
     quantity: req.body.quantity ? req.body.quantity : null,
-    price: req.body.price ? req.body.price : null
+    price: req.body.price ? req.body.price : null,
+    imageUrl: req.body.imageUrl ? req.body.imageUrl : null
   }
 
   try{

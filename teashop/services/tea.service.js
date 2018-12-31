@@ -20,7 +20,8 @@ exports.createTea = async function(tea){
     kind: tea.kind,
     unit: tea.unit,
     quantity: tea.quantity,
-    price: tea.price
+    price: tea.price,
+    imageUrl: tea.imageUrl
   });
 
   try {
@@ -29,6 +30,12 @@ exports.createTea = async function(tea){
   } catch(e){
     throw Error("Tea spilled without brewing, sorry.")
   }
+}
+
+exports.getTea = async function(tea) {
+  const id = tea.id;
+  const showTea = Tea.findById(id);
+  console.log(showTea);
 }
 
 exports.updateTea = async function(tea){
@@ -50,6 +57,7 @@ exports.updateTea = async function(tea){
   oldTea.unit = tea.unit;
   oldTea.quantity = tea.quantity;
   oldTea.price = tea.price;
+  oldTea.imageUrl = tea.imageUrl;
 
   console.log(oldTea);
 

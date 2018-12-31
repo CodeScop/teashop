@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private teaService: TeaService) {}
 
+  teasList: Tea[];
   ngOnInit() {
-    teasList: Tea[]=[];
     this.teaService.getTeas()
     .subscribe(teas => {
       this.teasList = teas;

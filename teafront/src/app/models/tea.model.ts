@@ -5,6 +5,7 @@ class Tea {
   unit: string;
   quantity: number;
   price: number;
+  imageUrl: string;
 
   constructor(){
     this.name = ""
@@ -12,6 +13,7 @@ class Tea {
     this.unit = ""
     this.quantity
     this.price
+    this.imageUrl = ""
   }
 }
 

@@ -3,10 +3,11 @@
   </div>
 <div class="container">
   <h1 class="text-dark">Our selection of fine teas</h1>
-  <div class="card-group teasList" *ngIf="teasList">
-    <div class="card text-center tea" *ngFor="let tea of teasList">
+  <div class="card-columns teasList" *ngIf="teasList">
+    <div class="card text-center tea border-dark" *ngFor="let tea of teasList">
+      <img src="{{tea.imageUrl}}" class="card-img-top" alt="Image of {{tea.name}}" />
       <h5 class="card-title bg-dark p-2"><a href="/tea/{{tea._id}}" class="text-success">{{tea.name}}</a></h5>
-      <p class="card-text text-dark p-2"><em>~{{tea.kind}}~</em></p>
+      <p class="card-text text-dark pb-2"><em>~{{tea.kind}}~</em></p>
     </div>
   </div>
 </div>

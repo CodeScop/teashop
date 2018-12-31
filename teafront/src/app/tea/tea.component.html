@@ -59,19 +59,19 @@
 
               <ng-template #editTD>
                 <td>
-                  <input name="name" id="name" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.name" placeholder={{tea.name}} class="form-control">
+                  <input name="name" id="name" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.name" placeholder={{tea.name}} class="form-control">
                 </td>
                 <td>
-                  <input name="kind" id="kind" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.kind" placeholder={{tea.kind}} class="form-control" >
+                  <input name="kind" id="kind" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.kind" placeholder={{tea.kind}} class="form-control" >
                 </td>
                 <td>
-                  <input name="unit" id="unit" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.unit" placeholder={{tea.unit}} class="form-control" >
+                  <input name="unit" id="unit" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.unit" placeholder={{tea.unit}} class="form-control" >
                 </td>
                 <td>
-                  <input name="quantity" id="quantity" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.quantity" placeholder={{tea.quantity}} class="form-control" >
+                  <input name="quantity" id="quantity" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.quantity" placeholder={{tea.quantity}} class="form-control" >
                 </td>
                 <td>
-                  <input name="price" id="price" (keypress)="submitTea($event, tea)" [(ngModel)]="newTea.price" placeholder={{tea.price}} class="form-control" >
+                  <input name="price" id="price" (keypress)="submitTea($event, tea)" [(ngModel)]="tea.price" placeholder={{tea.price}} class="form-control" >
                 </td>
               </ng-template>
 

@@ -30,7 +30,7 @@ export class TeaService {
     }))
   }
 
-  oneTea(id:string): Observable<Tea>{
+  oneTea(id:string):Observable<any>{
     let showUrl = `${this.teaUrl}/${id}`
     return this.http.get(showUrl);
   }

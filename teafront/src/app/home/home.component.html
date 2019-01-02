@@ -13,13 +13,3 @@
     </div>
   </div>
 </div>
-<br>
-<div class="container" *ngIf="teasList">
-    <h5>Find tea by type:</h5>
-    <select class="form-control" name="unit" [(ngModel)]="kindSelection">
-        <option *ngFor="let kind of kindsList"  [value]="kind">{{kind}}</option>
-    </select>  
-</div>
-<div class="container">
-  <app-by-type [kindSelection] = "kindSelection" [teasList] = "teasList"></app-by-type>
-</div>

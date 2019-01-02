@@ -10,7 +10,6 @@ import { TeaComponent } from './tea/tea.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { ShowComponent } from './show/show.component';
-import { ByTypeComponent } from './by-type/by-type.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { ByTypeComponent } from './by-type/by-type.component';
     TeaComponent,
     HomeComponent,
     NavComponent,
-    ShowComponent,
-    ByTypeComponent
+    ShowComponent
   ],
   imports: [
     BrowserModule,

@@ -2,8 +2,8 @@ import { Response } from '@angular/http';
 import { TeaService } from '../services/tea.service';
 import Tea from '../models/tea.model';
 import { Component, OnInit } from '@angular/core';
-import { exists } from 'fs';
-import { async } from 'q';
+// import { exists } from 'fs';
+// import { async } from 'q';
 
 @Component({
   selector: 'app-home',

@@ -1,20 +1,37 @@
-exports.getLogin = (req, res, next) => {
-  console.log(req.session.isLoggedIn);
-  res.render('auth', {
-    path: '/login',
-    pageTitle: 'Login',
-    isAuthenticated: false
-  });
-};
+const { validationResult } = require('express-validator/check');
+const bcrypt = require('bcryptjs');
 
-exports.postLogin = (req, res, next) => {
-  req.session.isLoggedIn = true;
-  console.log(req.session.isLoggedIn);
-  res.send("<h1>This response works</h1>");
-};
+const User = require('../models/user.model');
 
-exports.postLogout = (req, res, next) => {
-  req.session.destroy(() => {
-    res.send('<h1>You are now logged out</h1>');
-  }); //method provided by express
+
+exports.signup = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()){
+    const error = new Error('Validation failed for this user.');
+    error.statusCode = 422;
+    error.data = errors.array();
+    console.log(error);
+    throw error;
+  }
+  const email = req.body.email;
+  const name = req.body.password;
+  const password = req.body.password;
+  bcrypt.hash(password, 12)
+    .then(hashedPw => {
+      const user = new User({
+        email: email,
+        password: hashedPw,
+        name: name
+      });
+      return user.save();
+    })
+    .then(result => {
+      res.status(201).json({message: 'User Created', userId: result._id});
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
 };

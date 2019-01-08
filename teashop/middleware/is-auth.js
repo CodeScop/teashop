@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     error.statusCode = 401;
     throw error;
   }
-  const token = req.get('Authorization'); //this will need to jive with front-end
+  const token = req.get('Authorization').split(" ")[1]; //this will need to jive with front-end
   let decodedToken;
   try{
     decodedToken = jwt.verify(token, 'supersecretsecret');

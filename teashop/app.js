@@ -8,7 +8,8 @@ var bluebird = require('bluebird');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var api = require('./routes/api.routes')
+var api = require('./routes/api.routes');
+
 
 var app = express();
 
@@ -18,7 +19,7 @@ app.set('view engine', 'ejs');
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api', api);
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/teashop', { useNewUrlParser: true })
 .then(()=> { 

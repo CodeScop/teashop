@@ -1,5 +1,6 @@
 <div class="container" *ngIf="kindSelection">
     <h3 class="text-dark" >Our selection of {{kindSelection}}s </h3>
+<<<<<<< HEAD
     <div class="card-columns teasList" *ngIf="teasList">
       <div *ngFor="let tea of teasList">
         <div class="card text-center tea border-dark" *ngIf="tea.kind == kindSelection" >
@@ -8,6 +9,13 @@
           </ng-container>
           <h5 class="card-title bg-dark p-2"><a href="/tea/{{tea._id}}" class="text-success">{{tea.name}}</a></h5>
           <p class="card-text text-dark pb-2"><em>~{{tea.kind}}~</em></p>
+=======
+    <div class="card-group teasList">
+      <div class="card text-center tea" style="display: flex; flex-wrap: wrap; flex-direction: row" *ngFor="let tea of teasList">
+        <div class="card text-center tea" *ngIf="tea.kind == kindSelection">
+            <h5 class="card-title bg-dark p-2"><a href="/tea/{{tea._id}}" class="text-success">{{tea.name}}</a></h5>
+            <p class="card-text text-dark p-2"><em>~{{tea.kind}}~</em></p>
+>>>>>>> 13b77797f51186f31d017c4a96f1cc87d9ea9bf9
         </div>
       </div>
     </div>
